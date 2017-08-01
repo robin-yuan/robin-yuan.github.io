@@ -4,7 +4,7 @@
 (function (ext) {
     // Default step duration: 0.5s
     var STEP_DURATION = 0.5,
-        /*API_BASE_URL = "http://192.168.0.1:8080/?action=command&command=",
+        API_BASE_URL = "http://192.168.0.1:8080/?action=command&command=",
 
         // Asynchronous HTTP Get Request
         httpGetAsync = function (theUrl, callback) {
@@ -16,7 +16,7 @@
             };
             xmlHttp.open("GET", theUrl, true); // true for asynchronous
             xmlHttp.send(null);
-        },*/
+        },
         var socket = new WebSocket('192.168.10.200:8899'); 
  
          // 打开Socket 
