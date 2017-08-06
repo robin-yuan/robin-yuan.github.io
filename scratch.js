@@ -19,7 +19,7 @@
         },
 
         sendMove = function (command, duration, callback) {
-            httpGetAsync(API_BASE_URL + command=duration);
+            httpGetAsync(API_BASE_URL + command);
             if (duration && duration > 0) {
                 setTimeout(function () {
                     httpGetAsync(API_BASE_URL + "stop");
