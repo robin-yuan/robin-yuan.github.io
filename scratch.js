@@ -4,7 +4,7 @@
 (function (ext) {
     // Default step duration: 0.5s
     var STEP_DURATION = 0.5,
-        API_BASE_URL = "http://127.0.0.1:8900/?action=command&command=",
+        API_BASE_URL = "http://127.0.0.1:8900/?command=",
 
         // Asynchronous HTTP Get Request
         httpGetAsync = function (theUrl, callback) {
@@ -19,7 +19,7 @@
         },
 
         sendMove = function (command, duration, callback) {
-            httpGetAsync(API_BASE_URL + command);
+            httpGetAsync(API_BASE_URL + duration);
             if (duration && duration > 0) {
                 setTimeout(function () {
                     httpGetAsync(API_BASE_URL + "stop");
