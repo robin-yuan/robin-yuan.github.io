@@ -4,7 +4,9 @@
 (function (ext) {
     // Default step duration: 0.5s
     var STEP_DURATION = 0.5,
-        API_BASE_URL = "http://127.0.0.1:8900/?command=",
+        API_BASE_URL1 = "http://127.0.0.1:8900/?set_leds=",
+        API_BASE_URL2 = "http://127.0.0.1:8900/?set_yaw=",
+        API_BASE_URL3 = "http://127.0.0.1:8900/?set_depth=",
 
         // Asynchronous HTTP Get Request
         httpGetAsync = function (theUrl, callback) {
@@ -18,11 +20,29 @@
             xmlHttp.send(null);
         },
 
-        sendMove = function (command, duration, callback) {
-            httpGetAsync(API_BASE_URL + command=);
+        sendMove1 = function (command, duration, callback) {
+            httpGetAsync(API_BASE_URL1 + duration);
             if (duration && duration > 0) {
                 setTimeout(function () {
-                    httpGetAsync(API_BASE_URL + "stop");
+                    httpGetAsync(API_BASE_URL1 + "stop");
+                    callback();
+                }, duration * 1000);
+            }
+        },
+        sendMove2 = function (command, duration, callback) {
+            httpGetAsync(API_BASE_URL2 + duration);
+            if (duration && duration > 0) {
+                setTimeout(function () {
+                    httpGetAsync(API_BASE_URL2 + "stop");
+                    callback();
+                }, duration * 1000);
+            }
+        },
+        sendMove3 = function (command, duration, callback) {
+            httpGetAsync(API_BASE_URL3 + duration);
+            if (duration && duration > 0) {
+                setTimeout(function () {
+                    httpGetAsync(API_BASE_URL3 + "stop");
                     callback();
                 }, duration * 1000);
             }
@@ -40,16 +60,16 @@
 
     ext.set_leds = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
-        sendMove("set_leds", duration, callback);
+        sendMove1("set_leds", duration, callback);
     };
 
     ext.set_yaw = function (duration, callback) {
         // Robot API quirk: "backward" is actually "forward" at the moment
-        sendMove("set_yaw", duration, callback);
+        sendMove2("set_yaw", duration, callback);
     };
 
     ext.set_depth = function (duration, callback) {
-        sendMove("set_depth", duration, callback);
+        sendMove3("set_depth", duration, callback);
     };
 
    /* ext.turn_left = function (duration, callback) {
