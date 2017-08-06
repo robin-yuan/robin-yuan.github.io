@@ -4,7 +4,7 @@
 (function (ext) {
     // Default step duration: 0.5s
     var STEP_DURATION = 0.5,
-        API_BASE_URL = "http://127.0.0.1:8900/?",
+        API_BASE_URL = "http://127.0.0.1:8900/?command=",
 
         // Asynchronous HTTP Get Request
         httpGetAsync = function (theUrl, callback) {
