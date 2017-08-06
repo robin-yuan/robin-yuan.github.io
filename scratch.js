@@ -3,7 +3,7 @@
 "use strict";
 (function (ext) {
     // Default step duration: 0.5s
-    var STEP_DURATION = 0.5,
+    var STEP_DURATION = 0,
         API_BASE_URL1 = "http://127.0.0.1:8900/?set_leds=",
         API_BASE_URL2 = "http://127.0.0.1:8900/?set_yaw=",
         API_BASE_URL3 = "http://127.0.0.1:8900/?set_depth=",
