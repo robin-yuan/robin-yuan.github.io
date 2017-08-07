@@ -4,13 +4,16 @@
 (function (ext) {
     // Default step duration: 0.5s
     var STEP_DURATION = 0,
-        API_BASE_URL1 = "http://127.0.0.1:8900/command?degrees=",
-        API_BASE_URL2 = "http://127.0.0.1:8900/?set_forward?degrees=",
-        API_BASE_URL3 = "http://127.0.0.1:8900/?set_backward?degrees=",
-        API_BASE_URL3 = "http://127.0.0.1:8900/?set_depth?degrees=",
-        API_BASE_URL3 = "http://127.0.0.1:8900/?set_up?degrees=",
-        API_BASE_URL3 = "http://127.0.0.1:8900/?set_down?degrees=",
-        API_BASE_URL3 = "http://127.0.0.1:8900/?set_?degrees=",
+        API_BASE_URL1 = "http://127.0.0.1:8900/set_leds?degrees=",
+        API_BASE_URL2 = "http://127.0.0.1:8900/set_forward?degrees=",
+        API_BASE_URL3 = "http://127.0.0.1:8900/set_backward?degrees=",
+        API_BASE_URL4 = "http://127.0.0.1:8900/set_depth?degrees=",
+        API_BASE_URL5 = "http://127.0.0.1:8900/set_up?degrees=",
+        API_BASE_URL6 = "http://127.0.0.1:8900/set_down?degrees=",
+        API_BASE_URL7 = "http://127.0.0.1:8900/set_north?degrees=",
+        API_BASE_URL8 = "http://127.0.0.1:8900/set_right?degrees=",
+        API_BASE_URL9 = "http://127.0.0.1:8900/set_left?degrees=",
+       // API_BASE_URL10 = "http://127.0.0.1:8900/set_stop?degrees=",
 
         // Asynchronous HTTP Get Request
         httpGetAsync = function (theUrl, callback) {
@@ -54,13 +57,80 @@
                 }, duration * 100);
             }
         },
+        sendMove4 = function (command, duration, callback) {
+            httpGetAsync(API_BASE_URL4 + duration);
+            
+            if (duration && duration > 0) {
+                setTimeout(function () {
+                    //httpGetAsync(API_BASE_URL2 + "stop");
+                    callback();
+                }, duration * 100);
+            }
+        },
+        sendMove5 = function (command, duration, callback) {
+            httpGetAsync(API_BASE_URL5 + duration);
+            
+            if (duration && duration > 0) {
+                setTimeout(function () {
+                    //httpGetAsync(API_BASE_URL2 + "stop");
+                    callback();
+                }, duration * 100);
+            }
+        },
+        sendMove6 = function (command, duration, callback) {
+            httpGetAsync(API_BASE_URL6 + duration);
+            
+            if (duration && duration > 0) {
+                setTimeout(function () {
+                    //httpGetAsync(API_BASE_URL2 + "stop");
+                    callback();
+                }, duration * 100);
+            }
+        },
+        sendMove7 = function (command, duration, callback) {
+            httpGetAsync(API_BASE_URL7 + duration);
+            
+            if (duration && duration > 0) {
+                setTimeout(function () {
+                    //httpGetAsync(API_BASE_URL2 + "stop");
+                    callback();
+                }, duration * 100);
+            }
+        },
+        sendMove8 = function (command, duration, callback) {
+            httpGetAsync(API_BASE_URL8 + duration);
+            
+            if (duration && duration > 0) {
+                setTimeout(function () {
+                    //httpGetAsync(API_BASE_URL2 + "stop");
+                    callback();
+                }, duration * 100);
+            }
+        },
+        sendMove9 = function (command, duration, callback) {
+            httpGetAsync(API_BASE_URL9 + duration);
+            
+            if (duration && duration > 0) {
+                setTimeout(function () {
+                    //httpGetAsync(API_BASE_URL2 + "stop");
+                    callback();
+                }, duration * 100);
+            }
+        },
+        
 
         // Block and block menu descriptions
         descriptor = {
             blocks: [
-                ['w', 'turn on/off the light %n ', 'set_leds', STEP_DURATION],
-                ['w', 'turn to %n degrees', 'set_yaw', STEP_DURATION],
-                ['w', 'move down to %n centimeters', 'set_depth', STEP_DURATION],
+                ['w', '开关灯 %n ', 'set_leds', STEP_DURATION],
+                ['w', 'turn on/off the light %n ', 'set_forward', STEP_DURATION],
+                ['w', 'turn on/off the light %n ', 'set_backword', STEP_DURATION],
+                ['w', 'turn on/off the light %n ', 'set_depth', STEP_DURATION],
+                ['w', 'turn on/off the light %n ', 'set_up', STEP_DURATION],
+                ['w', 'turn on/off the light %n ', 'set_down', STEP_DURATION],
+                ['w', 'turn on/off the light %n ', 'set_north', STEP_DURATION],
+                ['w', 'turn to %n degrees', 'set_right', STEP_DURATION],
+                ['w', 'move down to %n centimeters', 'set_left', STEP_DURATION],
                // ['w', 'turn right for %n seconds', 'turn_right', STEP_DURATION]
             ]
         };
@@ -77,6 +147,30 @@
 
     ext.set_depth = function (duration, callback) {
         sendMove3("set_depth", duration, callback);
+    };
+     ext.set_leds = function (duration, callback) {
+        // Robot API quirk: "forward" is actually "backward" at the moment
+        sendMove1("set_leds", duration, callback);
+    };
+     ext.set_leds = function (duration, callback) {
+        // Robot API quirk: "forward" is actually "backward" at the moment
+        sendMove1("set_leds", duration, callback);
+    };
+     ext.set_leds = function (duration, callback) {
+        // Robot API quirk: "forward" is actually "backward" at the moment
+        sendMove1("set_leds", duration, callback);
+    };
+     ext.set_leds = function (duration, callback) {
+        // Robot API quirk: "forward" is actually "backward" at the moment
+        sendMove1("set_leds", duration, callback);
+    };
+     ext.set_leds = function (duration, callback) {
+        // Robot API quirk: "forward" is actually "backward" at the moment
+        sendMove1("set_leds", duration, callback);
+    };
+     ext.set_leds = function (duration, callback) {
+        // Robot API quirk: "forward" is actually "backward" at the moment
+        sendMove1("set_leds", duration, callback);
     };
 
    /* ext.turn_left = function (duration, callback) {
