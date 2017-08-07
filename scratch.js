@@ -4,9 +4,9 @@
 (function (ext) {
     // Default step duration: 0.5s
     var STEP_DURATION = 0,
-        API_BASE_URL1 = "http://127.0.0.1:8900/set_leds?/degrees=",
-        API_BASE_URL2 = "http://127.0.0.1:8900/?set_yaw?/degrees=",
-        API_BASE_URL3 = "http://127.0.0.1:8900/?set_depth?/degrees=",
+        API_BASE_URL1 = "http://127.0.0.1:8900/set_leds?degrees=",
+        API_BASE_URL2 = "http://127.0.0.1:8900/?set_yaw?degrees=",
+        API_BASE_URL3 = "http://127.0.0.1:8900/?set_depth?degrees=",
 
         // Asynchronous HTTP Get Request
         httpGetAsync = function (theUrl, callback) {
@@ -22,33 +22,33 @@
 
         sendMove1 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL1 + duration);
-            setTimeout(duration*1000);
-           /* if (duration && duration > 0) {
+        
+            if (duration && duration > 0) {
                 setTimeout(function () {
-                    httpGetAsync(API_BASE_URL1 + "stop");
+                   // httpGetAsync(API_BASE_URL1 + "stop");
                     callback();
                 }, duration * 1000);
-            }*/
+            }
         },
         sendMove2 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL2 + duration);
-            setTimeout(duration*1000);
-           /* if (duration && duration > 0) {
+            
+            if (duration && duration > 0) {
                 setTimeout(function () {
-                    httpGetAsync(API_BASE_URL2 + "stop");
+                    //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
-                }, duration * 1000);
-            }*/
+                }, duration * 100);
+            }
         },
         sendMove3 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL3 + duration);
             setTimeout(duration*1000);
-           /* if (duration && duration > 0) {
+           if (duration && duration > 0) {
                 setTimeout(function () {
-                    httpGetAsync(API_BASE_URL3 + "stop");
+                   // httpGetAsync(API_BASE_URL3 + "stop");
                     callback();
-                }, duration * 1000);
-            }*/
+                }, duration * 100);
+            }
         },
 
         // Block and block menu descriptions
