@@ -5,8 +5,12 @@
     // Default step duration: 0.5s
     var STEP_DURATION = 0,
         API_BASE_URL1 = "http://127.0.0.1:8900/set_leds?degrees=",
-        API_BASE_URL2 = "http://127.0.0.1:8900/?set_yaw?degrees=",
+        API_BASE_URL2 = "http://127.0.0.1:8900/?set_forward?degrees=",
+        API_BASE_URL3 = "http://127.0.0.1:8900/?set_backward?degrees=",
         API_BASE_URL3 = "http://127.0.0.1:8900/?set_depth?degrees=",
+        API_BASE_URL3 = "http://127.0.0.1:8900/?set_up?degrees=",
+        API_BASE_URL3 = "http://127.0.0.1:8900/?set_down?degrees=",
+        API_BASE_URL3 = "http://127.0.0.1:8900/?set_?degrees=",
 
         // Asynchronous HTTP Get Request
         httpGetAsync = function (theUrl, callback) {
@@ -21,7 +25,7 @@
         },
 
         sendMove1 = function (command, duration, callback) {
-            httpGetAsync(API_BASE_URL1 + duration);
+            httpGetAsync(API_BASE_URL1 + command + duration);
         
             if (duration && duration > 0) {
                 setTimeout(function () {
