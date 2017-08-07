@@ -44,7 +44,7 @@
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
-                }, duration * 100);
+                }, duration * 1000);
             }
         },
         sendMove3 = function (command, duration, callback) {
@@ -54,7 +54,7 @@
                 setTimeout(function () {
                    // httpGetAsync(API_BASE_URL3 + "stop");
                     callback();
-                }, duration * 100);
+                }, duration * 1000);
             }
         },
         sendMove4 = function (command, duration, callback) {
@@ -123,14 +123,14 @@
         descriptor = {
             blocks: [
                 ['w', '开关灯 %n ', 'set_leds', STEP_DURATION],
-                ['w', 'turn on/off the light %n ', 'set_forward', STEP_DURATION],
-                ['w', 'turn on/off the light %n ', 'set_backword', STEP_DURATION],
-                ['w', 'turn on/off the light %n ', 'set_depth', STEP_DURATION],
-                ['w', 'turn on/off the light %n ', 'set_up', STEP_DURATION],
-                ['w', 'turn on/off the light %n ', 'set_down', STEP_DURATION],
-                ['w', 'turn on/off the light %n ', 'set_north', STEP_DURATION],
-                ['w', 'turn to %n degrees', 'set_right', STEP_DURATION],
-                ['w', 'move down to %n centimeters', 'set_left', STEP_DURATION],
+                ['w', '前进 %n 秒', 'set_forward', STEP_DURATION],
+                ['w', '后退 %n 秒', 'set_backward', STEP_DURATION],
+                ['w', '设定机器深度水下 %n 厘米', 'set_depth', STEP_DURATION],
+                ['w', '上升 %n 厘米', 'set_up', STEP_DURATION],
+                ['w', '下沉 %n 厘米', 'set_down', STEP_DURATION],
+                ['w', '设定机器方向 %n ', 'set_north', STEP_DURATION],
+                ['w', '右转 %n 度', 'set_right', STEP_DURATION],
+                ['w', '左转 %n 度', 'set_left', STEP_DURATION],
                // ['w', 'turn right for %n seconds', 'turn_right', STEP_DURATION]
             ]
         };
@@ -140,37 +140,37 @@
         sendMove1("set_leds", duration, callback);
     };
 
-    ext.set_yaw = function (duration, callback) {
+    ext.set_forward = function (duration, callback) {
         // Robot API quirk: "backward" is actually "forward" at the moment
-        sendMove2("set_yaw", duration, callback);
+        sendMove2("set_forward", duration, callback);
     };
 
-    ext.set_depth = function (duration, callback) {
-        sendMove3("set_depth", duration, callback);
+    ext.set_backward = function (duration, callback) {
+        sendMove3("set_backward", duration, callback);
     };
-     ext.set_leds = function (duration, callback) {
+     ext.set_depth = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
-        sendMove1("set_leds", duration, callback);
+        sendMove4("set_depth", duration, callback);
     };
-     ext.set_leds = function (duration, callback) {
+     ext.set_up = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
-        sendMove1("set_leds", duration, callback);
+        sendMove5("set_up", duration, callback);
     };
-     ext.set_leds = function (duration, callback) {
+     ext.set_down = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
-        sendMove1("set_leds", duration, callback);
+        sendMove6("set_down", duration, callback);
     };
-     ext.set_leds = function (duration, callback) {
+     ext.set_north = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
-        sendMove1("set_leds", duration, callback);
+        sendMove7("set_north", duration, callback);
     };
-     ext.set_leds = function (duration, callback) {
+     ext.set_right = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
-        sendMove1("set_leds", duration, callback);
+        sendMove8("set_right", duration, callback);
     };
-     ext.set_leds = function (duration, callback) {
+     ext.set_left = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
-        sendMove1("set_leds", duration, callback);
+        sendMove9("set_left", duration, callback);
     };
 
    /* ext.turn_left = function (duration, callback) {
