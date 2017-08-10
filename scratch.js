@@ -13,6 +13,7 @@
         API_BASE_URL7 = "http://127.0.0.1:8900/set_north?degrees=",
         API_BASE_URL8 = "http://127.0.0.1:8900/set_right?degrees=",
         API_BASE_URL9 = "http://127.0.0.1:8900/set_left?degrees=",
+        API_BASE_URL10 = "http://127.0.0.1:8900/set_drive_loop?degrees=",
        // API_BASE_URL10 = "http://127.0.0.1:8900/set_stop?degrees=",
 
         // Asynchronous HTTP Get Request
@@ -40,7 +41,7 @@
         sendMove2 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL2 + duration);
             
-            if (duration && duration > 0) {
+            if (duration && duration >= 0) {
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
@@ -50,7 +51,7 @@
         sendMove3 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL3 + duration);
             setTimeout(duration*1000);
-           if (duration && duration > 0) {
+           if (duration && duration >= 0) {
                 setTimeout(function () {
                    // httpGetAsync(API_BASE_URL3 + "stop");
                     callback();
@@ -60,7 +61,7 @@
         sendMove4 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL4 + duration);
             
-            if (duration && duration > 0) {
+            if (duration && duration >= 0) {
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
@@ -70,7 +71,7 @@
         sendMove5 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL5 + duration);
             
-            if (duration && duration > 0) {
+            if (duration && duration >= 0) {
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
@@ -80,7 +81,7 @@
         sendMove6 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL6 + duration);
             
-            if (duration && duration > 0) {
+            if (duration && duration >= 0) {
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
@@ -90,7 +91,7 @@
         sendMove7 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL7 + duration);
             
-            if (duration && duration > 0) {
+            if (duration && duration >= 0) {
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
@@ -100,7 +101,7 @@
         sendMove8 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL8 + duration);
             
-            if (duration && duration > 0) {
+            if (duration && duration >= 0) {
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
@@ -110,11 +111,21 @@
         sendMove9 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL9 + duration);
             
-            if (duration && duration > 0) {
+            if (duration && duration >= 0) {
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
                 }, duration * 100);
+            }
+        },
+        sendMove10 = function (command, duration, callback) {
+            httpGetAsync(API_BASE_URL10 + duration);
+        
+           if (1) {
+                setTimeout(function () {
+                   // httpGetAsync(API_BASE_URL1 + "stop");
+                    callback();
+                }, 1000);
             }
         },
         
@@ -131,6 +142,7 @@
                 ['w', '设定机器方向 %n ', 'set_north', STEP_DURATION],
                 ['w', '右转 %n 度', 'set_right', STEP_DURATION],
                 ['w', '左转 %n 度', 'set_left', STEP_DURATION],
+                ['w', '电机解锁/加锁 %n', 'set_drive_loop', STEP_DURATION],
                // ['w', 'turn right for %n seconds', 'turn_right', STEP_DURATION]
             ]
         };
@@ -171,6 +183,10 @@
      ext.set_left = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
         sendMove9("set_left", duration, callback);
+    };
+    ext.set_drive_loop = function (duration, callback) {
+        // Robot API quirk: "forward" is actually "backward" at the moment
+        sendMove10("set_drive_loop", duration, callback);
     };
 
    /* ext.turn_left = function (duration, callback) {
