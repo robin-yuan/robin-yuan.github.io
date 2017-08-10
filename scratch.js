@@ -41,11 +41,11 @@
         sendMove2 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL2 + duration);
             
-            if (duration && duration >= 0) {
+            if (1) {
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
-                }, duration * 1000);
+                }, duration * 1000+100);
             }
         },
         sendMove3 = function (command, duration, callback) {
@@ -61,11 +61,11 @@
         sendMove4 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL4 + duration);
             
-            if (duration && duration >= 0) {
+            if (1) {
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
-                }, 1000);
+                }, duration * 1000+100);
             }
         },
         sendMove5 = function (command, duration, callback) {
@@ -75,47 +75,47 @@
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
-                }, duration * 100);
+                }, duration * 100+100);
             }
         },
         sendMove6 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL6 + duration);
             
-            if (duration && duration >= 0) {
+            if (1) {
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
-                }, duration * 100);
+                }, duration * 100+100);
             }
         },
         sendMove7 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL7 + duration);
             
-            if (duration && duration >= 0) {
+            if (1) {
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
-                }, duration * 100);
+                }, duration * 100+100);
             }
         },
         sendMove8 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL8 + duration);
             
-            if (duration && duration >= 0) {
+            if (1) {
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
-                }, duration * 100);
+                }, duration * 100+100);
             }
         },
         sendMove9 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL9 + duration);
             
-            if (duration && duration >= 0) {
+            if (1) {
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
-                }, duration * 100);
+                }, duration * 100+100);
             }
         },
         sendMove10 = function (command, duration, callback) {
