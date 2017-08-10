@@ -30,12 +30,12 @@
         sendMove1 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL1 + duration);
         
-           /* if (duration && duration > 0) {
+           if (1) {
                 setTimeout(function () {
                    // httpGetAsync(API_BASE_URL1 + "stop");
                     callback();
-                }, duration * 1000);
-            }*/
+                }, 1000);
+            }
         },
         sendMove2 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL2 + duration);
