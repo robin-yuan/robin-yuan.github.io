@@ -45,17 +45,17 @@
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
-                }, duration * 1000+100);
+                }, duration * 1000+500);
             }
         },
         sendMove3 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL3 + duration);
-            setTimeout(duration*1000);
+           
            if (1) {
                 setTimeout(function () {
                    // httpGetAsync(API_BASE_URL3 + "stop");
                     callback();
-                }, duration * 1000+100);
+                }, duration * 1000+500);
             }
         },
         sendMove4 = function (command, duration, callback) {
@@ -65,7 +65,7 @@
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
-                }, duration * 1000+100);
+                }, duration * 150+1000);
             }
         },
         sendMove5 = function (command, duration, callback) {
@@ -95,7 +95,7 @@
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
-                }, duration * 100+100);
+                }, duration * 20+3000);
             }
         },
         sendMove8 = function (command, duration, callback) {
