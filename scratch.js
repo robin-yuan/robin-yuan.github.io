@@ -133,12 +133,12 @@
         // Block and block menu descriptions
         descriptor = {
             blocks: [
-               // ['w', '开关灯 %n ', 'set_leds', STEP_DURATION],
-               // ['w', '前进 %n 秒', 'set_forward', STEP_DURATION],
-               // ['w', '后退 %n 秒', 'set_backward', STEP_DURATION],
-                ['w', '读取机器人当前深度值 ', 'set_leds', STEP_DURATION],
-                ['w', '控制器计算电机输出', 'set_forward', STEP_DURATION],
-                ['w', '发送给 %n 号电机', 'set_backward', STEP_DURATION],
+                ['w', '开关灯 %n ', 'set_leds', STEP_DURATION],
+                ['w', '前进 %n 秒', 'set_forward', STEP_DURATION],
+                ['w', '后退 %n 秒', 'set_backward', STEP_DURATION],
+                //['w', '读取机器人当前深度值 ', 'set_leds', STEP_DURATION],
+               // ['w', '控制器计算电机输出', 'set_forward', STEP_DURATION],
+               // ['w', '发送给 %n 号电机', 'set_backward', STEP_DURATION],
                 ['w', '设定机器深度水下 %n 厘米', 'set_depth', STEP_DURATION],
                 ['w', '上升 %n 厘米', 'set_up', STEP_DURATION],
                 ['w', '下沉 %n 厘米', 'set_down', STEP_DURATION],
