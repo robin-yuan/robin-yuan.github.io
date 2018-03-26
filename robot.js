@@ -4,16 +4,16 @@
 (function (ext) {
     // Default step duration: 0.5s
     var STEP_DURATION = 0,
-        API_BASE_URL1 = "http://192.168.1.90:8900/set_leds?degrees=",
-        API_BASE_URL2 = "http://192.168.1.90:8900/set_forward?degrees=",
-        API_BASE_URL3 = "http://192.168.1.90:8900/set_backward?degrees=",
-        API_BASE_URL4 = "http://192.168.1.90:8900/set_depth?degrees=",
-        API_BASE_URL5 = "http://192.168.1.90:8900/set_up?degrees=",
-        API_BASE_URL6 = "http://192.168.1.90:8900/set_down?degrees=",
-        API_BASE_URL7 = "http://192.168.1.90:8900/set_north?degrees=",
-        API_BASE_URL8 = "http://192.168.1.90:8900/set_right?degrees=",
-        API_BASE_URL9 = "http://192.168.1.90:8900/set_left?degrees=",
-        API_BASE_URL10 = "http://192.168.1.90:8900/set_drive_loop?degrees=",
+        API_BASE_URL1 = "http://192.168.1.93:8900/set_leds?degrees=",
+        API_BASE_URL2 = "http://192.168.1.93:8900/set_forward?degrees=",
+        API_BASE_URL3 = "http://192.168.1.93:8900/set_backward?degrees=",
+        API_BASE_URL4 = "http://192.168.1.93:8900/set_depth?degrees=",
+        API_BASE_URL5 = "http://192.168.1.93:8900/set_up?degrees=",
+        API_BASE_URL6 = "http://192.168.1.93:8900/set_down?degrees=",
+        API_BASE_URL7 = "http://192.168.1.93:8900/set_north?degrees=",
+        API_BASE_URL8 = "http://192.168.1.93:8900/set_right?degrees=",
+        API_BASE_URL9 = "http://192.168.1.93:8900/set_left?degrees=",
+        API_BASE_URL10 = "http://192.168.1.93:8900/set_drive_loop?degrees=",
        // API_BASE_URL10 = "http://127.0.0.1:8900/set_stop?degrees=",
 
         // Asynchronous HTTP Get Request
