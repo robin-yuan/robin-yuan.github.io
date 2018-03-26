@@ -105,7 +105,7 @@
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
-                }, duration * 100+100);
+                }, 1000);
             }
         },
         sendMove9 = function (command, duration, callback) {
@@ -115,7 +115,7 @@
                 setTimeout(function () {
                     //httpGetAsync(API_BASE_URL2 + "stop");
                     callback();
-                }, duration * 100+100);
+                }, 1000);
             }
         },
         sendMove10 = function (command, duration, callback) {
