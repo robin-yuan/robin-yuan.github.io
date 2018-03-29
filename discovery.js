@@ -1,81 +1,33 @@
-/*jslint browser: true*/
-/*global $, ScratchExtensions, setTimeout */
-"use strict";
-(function (ext) {
-    // Default step duration: 0.5s
-    var STEP_DURATION = 0.5,
-        API_BASE_URL = "http://192.168.0.1:8080/?action=command&command=",
-
-        // Asynchronous HTTP Get Request
-        httpGetAsync = function (theUrl, callback) {
-            var xmlHttp = new XMLHttpRequest();
-            xmlHttp.onreadystatechange = function () {
-                if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
-                    callback(xmlHttp.responseText);
-                }
-            };
-            xmlHttp.open("GET", theUrl, true); // true for asynchronous
-            xmlHttp.send(null);
-        },
-        var socket = new WebSocket('192.168.10.200:8899'); 
- 
-         // 打开Socket 
-         
- 
-         // 发送一个初始化消息
-       
-        sendMove = function (command, duration, callback) {
-            socket.onopen = function(event) { 
- 		socket.send('{"leds":{"led_control":1}}');
-		};
-            //httpGetAsync(API_BASE_URL + command);
-            /*if (duration && duration > 0) {
-                setTimeout(function () {
-                    httpGetAsync(API_BASE_URL + "stop");
-                    callback();
-                }, duration * 1000);
-            }*/
-        },
-
-        // Block and block menu descriptions
-        descriptor = {
-            blocks: [
-                ['w', 'move forward for %n seconds', 'move_forward', STEP_DURATION],
-                ['w', 'move backward for %n seconds', 'move_backward', STEP_DURATION],
-                ['w', 'turn left for %n seconds', 'turn_left', STEP_DURATION],
-                ['w', 'turn right for %n seconds', 'turn_right', STEP_DURATION]
-            ]
-        };
-
-    ext.move_forward = function (duration, callback) {
-        // Robot API quirk: "forward" is actually "backward" at the moment
-        sendMove("move_backward", duration, callback);
-    };
-
-    ext.move_backward = function (duration, callback) {
-        // Robot API quirk: "backward" is actually "forward" at the moment
-        sendMove("move_forward", duration, callback);
-    };
-
-    ext.turn_right = function (duration, callback) {
-        sendMove("turn_right", duration, callback);
-    };
-
-    ext.turn_left = function (duration, callback) {
-        sendMove("turn_left", duration, callback);
-    };
-
+(function(ext) {
     // Cleanup function when the extension is unloaded
-    ext._shutdown = function () {
-        sendMove("stop");
-    };
+    ext._shutdown = function() {};
 
     // Status reporting code
     // Use this to report missing hardware, plugin or unsupported browser
-    ext._getStatus = function () {
+    ext._getStatus = function() {
         return {status: 2, msg: 'Ready'};
     };
 
+    ext.get_temp = function(location, callback) {
+        // Make an AJAX call to the Open Weather Maps API
+        $.ajax({
+              url: 'http://api.openweathermap.org/data/2.5/weather?q='+location+'&units=imperial',
+              dataType: 'jsonp',
+              success: function( weather_data ) {
+                  // Got the data - parse it and return the temperature
+                  temperature = weather_data['main']['temp'];
+                  callback(temperature);
+              }
+        });
+    };
+
+    // Block and block menu descriptions
+    var descriptor = {
+        blocks: [
+            ['R', 'current temperature in city %s', 'get_temp', 'Boston, MA'],
+        ]
+    };
+
     // Register the extension
-    ScratchExtensions.register('Robotics extension', descriptor, ext);
+    ScratchExtensions.register('Weather extension', descriptor, ext);
 })({});
