@@ -4,6 +4,8 @@
 (function (ext) {
     // Default step duration: 0.5s
     var STEP_DURATION = 0,
+        sensors_depth = 0,
+        ws ,
         API_BASE_URL1 = "http://192.168.1.93:8900/set_leds?degrees=",
         API_BASE_URL2 = "http://192.168.1.93:8900/set_forward?degrees=",
         API_BASE_URL3 = "http://192.168.1.93:8900/set_backward?degrees=",
@@ -146,7 +148,8 @@
                 ['w', '右转 %n 度', 'set_right', STEP_DURATION],
                 ['w', '左转 %n 度', 'set_left', STEP_DURATION],
                 ['w', '电机解锁/加锁 %n', 'set_drive_loop', STEP_DURATION],
-                ['r', '电机状态:  set_drive_loop', 'set_drive_loop']
+                ['r', '当前机器深度', 'sensor_depth']
+                [' ', '链接到机器', 'connect'],
                // ['w', 'turn right for %n seconds', 'turn_right', STEP_DURATION]
             ]
         };
@@ -192,6 +195,16 @@
         // Robot API quirk: "forward" is actually "backward" at the moment
         sendMove10("set_drive_loop", duration, callback);
     };
+     ext.connect = function() {
+      ws = new WebSocket('ws://192.168.10.200:8899');
+      ws.onmessage = function(evt) {
+        data = JSON.parse(evt.data);
+        sensors_depth = data.sensors.depth_adc  
+      }
+    }
+     ext.sensor_depth = function() {
+      return sensors_depth;
+    }
 
    /* ext.turn_left = function (duration, callback) {
         sendMove("turn_left", duration, callback);
@@ -209,5 +222,5 @@
     };
 
     // Register the extension
-    ScratchExtensions.register('Robotics extension', descriptor, ext);
+    ScratchExtensions.register('Scratch2Discovery', descriptor, ext);
 })({});
