@@ -1,58 +1,85 @@
+/*
+ *This program is free software: you can redistribute it and/or modify
+ *it under the terms of the GNU General Public License as published by
+ *the Free Software Foundation, either version 3 of the License, or
+ *(at your option) any later version.
+ *
+ *This program is distributed in the hope that it will be useful,
+ *but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *GNU General Public License for more details.
+ *
+ *You should have received a copy of the GNU General Public License
+ *along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 (function(ext) {
-    // Cleanup function when the extension is unloaded
-    ext._shutdown = function() {};
 
-    // Status reporting code
-    // Use this to report missing hardware, plugin or unsupported browser
-    ext._getStatus = function() {
-        return {status: 2, msg: 'Ready'};
-    };
+  ext.latestUserTweet = function(name, callback) {
+    $.ajax({
+      method: "GET",
+      url: "http://scratchx-twitter.herokuapp.com/1.1/statuses/user_timeline.json",
+      data: {
+        screen_name: name,
+        count: 1
+      },
+      dataType: "json",
+      success: function(data) {
+        if (data.length > 0) {
+          callback(data[0].text);
+          return;
+        }
+        callback("No tweets found");
+      },
+      error: function(xhr, textStatus, error) {
+        console.log(error);
+        callback();
+      }
+    });
+  };
 
-    ext.power = function(base, exponent) {
-        return Math.pow(base, exponent);
-    };
+  ext.getTopTweet = function(sort, str, callback) {
+    //If searching popluar, remove # and @ symbols from query
+    if (sort == "popular") {
+      str = str.replace('#','').replace('@','');
+    }
+    $.ajax({
+      method: "GET",
+      url: "http://scratchx-twitter.herokuapp.com/1.1/search/tweets.json",
+      data: {
+        q: encodeURIComponent(str),
+        result_type: sort,
+        count: 1
+      },
+      dataType: "json",
+      success: function(data) {
+        if (data.statuses.length > 0) {
+          callback(data.statuses[0].text);
+          return;
+        }
+        callback("No tweets found");
+      },
+      error: function(xhr, textStatus, error) {
+        console.log(error);
+        callback();
+      }
+    });
+  };
 
-    // Block and block menu descriptions
-    var descriptor = {
-        blocks: [
-            // Block type, block name, function name, param1 default value, param2 default value
-            ['r', '%n ^ %n', 'power', 2, 3],
-        ]
-    };
+  ext._getStatus = function() {
+    return { status:2, msg:'Ready' };
+  };
 
-    // Register the extension
-    ScratchExtensions.register('Sample extension', descriptor, ext);
-})({});
-(function(ext) {
-    // Cleanup function when the extension is unloaded
-    ext._shutdown = function() {};
+  var descriptor = {
+    blocks: [
+      ['R', 'latest tweet from @%s', 'latestUserTweet', 'scratch'],
+      ['R', 'most %m.sort tweet containing %s', 'getTopTweet', 'recent', '#scratch'],
+    ],
+    menus: {
+      sort: ["popular", "recent"]
+    },
+    url: 'https://dev.twitter.com/overview/documentation'
+  };
 
-    // Status reporting code
-    // Use this to report missing hardware, plugin or unsupported browser
-    ext._getStatus = function() {
-        return {status: 2, msg: 'Ready'};
-    };
+  ScratchExtensions.register('Twitter', descriptor, ext);
 
-    ext.get_temp = function(location, callback) {
-        // Make an AJAX call to the Open Weather Maps API
-        $.ajax({
-              url: 'http://api.openweathermap.org/data/2.5/weather?q='+location+'&units=imperial',
-              dataType: 'jsonp',
-              success: function( weather_data ) {
-                  // Got the data - parse it and return the temperature
-                  temperature = weather_data['main']['temp'];
-                  callback(temperature);
-              }
-        });
-    };
-
-    // Block and block menu descriptions
-    var descriptor = {
-        blocks: [
-            ['R', 'current temperature in city %s', 'get_temp', 'Boston, MA'],
-        ]
-    };
-
-    // Register the extension
-    ScratchExtensions.register('Weather extension', descriptor, ext);
 })({});
