@@ -146,6 +146,7 @@
                 ['w', '右转 %n 度', 'set_right', STEP_DURATION],
                 ['w', '左转 %n 度', 'set_left', STEP_DURATION],
                 ['w', '电机解锁/加锁 %n', 'set_drive_loop', STEP_DURATION],
+                ['r', '电机状态: ' set_drive_loop, 'get_radar']
                // ['w', 'turn right for %n seconds', 'turn_right', STEP_DURATION]
             ]
         };
