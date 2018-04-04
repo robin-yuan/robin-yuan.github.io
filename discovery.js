@@ -1,3 +1,4 @@
+"use strict";
 (function(ext) {
     var ws;
     var when_near = false;
