@@ -23,9 +23,9 @@
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.onreadystatechange = function () {
                 if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-                   // callback(xmlHttp.responseText);
-                     sensors_depth = xmlHttp.responseText ;
-                 //   return sensors_depth;
+                    callback(xmlHttp.responseText);
+                 /*    sensors_depth = xmlHttp.responseText ;
+                 //   return sensors_depth;*/
                 }
             };
             xmlHttp.open("GET", theUrl, true); // true for asynchronous
@@ -201,6 +201,7 @@
         sendMove10("set_drive_loop", duration, callback);
     };
      ext.connect = function() {
+         return 0;
     /*  ws = new WebSocket('ws://localhost:8080');   
     ws.onopen = function()
     { 
