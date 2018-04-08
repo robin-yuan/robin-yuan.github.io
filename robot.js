@@ -61,7 +61,7 @@
             }
         },
         sendMove4 = function (command, duration, callback) {
-            httpGetAsync(API_BASE_URL4 + duration);
+           sensors_depth = httpGetAsync(API_BASE_URL4 + duration);
             
             if (1) {
                 setTimeout(function () {
@@ -170,7 +170,7 @@
     };
      ext.set_depth = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
-       sensors_depth = sendMove4("set_depth", duration, callback);
+       sendMove4("set_depth", duration, callback);
     };
      ext.set_up = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
