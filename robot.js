@@ -23,8 +23,9 @@
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.onreadystatechange = function () {
                 if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-                    callback(xmlHttp.responseText);
-                 /*    sensors_depth = xmlHttp.responseText ;
+                   return xmlHttp.responseText;
+                  /*    callback(xmlHttp.responseText);
+                   sensors_depth = xmlHttp.responseText ;
                  //   return sensors_depth;*/
                 }
             };
@@ -65,7 +66,7 @@
             }
         },
         sendMove4 = function (command, duration, callback) {
-            httpGetAsync(API_BASE_URL4 + duration);
+           sensors_depth = httpGetAsync(API_BASE_URL4 + duration);
             
             if (1) {
                 setTimeout(function () {
