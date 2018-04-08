@@ -23,13 +23,17 @@
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.onreadystatechange = function () {
                 if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
-                    callback(xmlHttp.responseText);
+                   // callback(xmlHttp.responseText);
+                     sensors_depth = paresInt(xmlHttp.responseText) ;
+                    return sensors_depth;
                 }
             };
             xmlHttp.open("GET", theUrl, true); // true for asynchronous
             xmlHttp.send(null);
         },
-
+    
+    
+    
         sendMove1 = function (command, duration, callback) {
             httpGetAsync(API_BASE_URL1 + duration);
         
