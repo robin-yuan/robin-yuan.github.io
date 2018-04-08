@@ -201,12 +201,12 @@
         sendMove10("set_drive_loop", duration, callback);
     };
      ext.connect = function() {
-      ws = new WebSocket('ws://localhost:8080');   
+    /*  ws = new WebSocket('ws://localhost:8080');   
     ws.onopen = function()
     { 
      ws.send(“hello”);
      };
-         /*
+         
       ws.onmessage = function(evt) {
         data = JSON.parse(evt.data);
         sensors_depth = data.depth_adc ;
