@@ -3,7 +3,7 @@
 "use strict";
 (function (ext) {
     // Default step duration: 0.5s
-    var sensors_depth = abc;
+    var sensors_depth = 10;
     var ws ;
     var STEP_DURATION = 0,
         API_BASE_URL1 =  "http://127.0.0.1:8900/set_leds?degrees=",
