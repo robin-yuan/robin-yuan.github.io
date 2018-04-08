@@ -201,7 +201,7 @@
         sendMove10("set_drive_loop", duration, callback);
     };
      ext.connect = function() {
-      ws = new WebSocket('wss://localhost:8080');
+      ws = new WebSocket('ws://localhost:8080');
          
      ws.onopen = function()
      { ws.send(“hello”);}
