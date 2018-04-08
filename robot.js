@@ -22,7 +22,7 @@
         httpGetAsync = function (theUrl, callback) {
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.onreadystatechange = function () {
-                if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
                    // callback(xmlHttp.responseText);
                      sensors_depth = xmlHttp.responseText ;
                    // return sensors_depth;
