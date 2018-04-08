@@ -61,7 +61,7 @@
             }
         },
         sendMove4 = function (command, duration, callback) {
-           sensors_depth = httpGetAsync(API_BASE_URL4 + duration);
+           sensors_depth = paresInt(httpGetAsync(API_BASE_URL4 + duration));
             
             if (1) {
                 setTimeout(function () {
