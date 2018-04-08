@@ -170,7 +170,7 @@
     };
      ext.set_depth = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
-        sendMove4("set_depth", duration, callback);
+       sensors_depth = sendMove4("set_depth", duration, callback);
     };
      ext.set_up = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
@@ -197,10 +197,10 @@
         sendMove10("set_drive_loop", duration, callback);
     };
      ext.connect = function() {
-      ws = new WebSocket('ws://192.168.10.200:8899');
+      ws = new WebSocket('ws://localhost:8080');
       ws.onmessage = function(evt) {
         data = JSON.parse(evt.data);
-        sensors_depth = data.sensors.depth_adc  
+        sensors_depth = data.depth_adc  
       }
     }
      ext.sensor_depth = function() {
