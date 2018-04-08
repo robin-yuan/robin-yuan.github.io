@@ -25,7 +25,7 @@
                 if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
                    // callback(xmlHttp.responseText);
                      sensors_depth = xmlHttp.responseText ;
-                    return sensors_depth;
+                 //   return sensors_depth;
                 }
             };
             xmlHttp.open("GET", theUrl, true); // true for asynchronous
