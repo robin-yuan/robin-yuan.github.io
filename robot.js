@@ -3,7 +3,7 @@
 "use strict";
 (function (ext) {
     // Default step duration: 0.5s
-    var sensors_depth = 11;
+    var sensors_depth = 10;
     var ws ;
     var STEP_DURATION = 0,
         API_BASE_URL1 =  "http://127.0.0.1:8900/set_leds?degrees=",
@@ -24,8 +24,8 @@
             xmlHttp.onreadystatechange = function () {
                 if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                    // callback(xmlHttp.responseText);
-                     sensors_depth = paresInt(xmlHttp.responseText) ;
-                    return sensors_depth;
+                     sensors_depth = xmlHttp.responseText ;
+                   // return sensors_depth;
                 }
             };
             xmlHttp.open("GET", theUrl, true); // true for asynchronous
@@ -204,7 +204,7 @@
       ws = new WebSocket('ws://localhost:8080');
       ws.onmessage = function(evt) {
         data = JSON.parse(evt.data);
-        sensors_depth = data.depth_adc  
+      //  sensors_depth = data.depth_adc  
       }
     }
      ext.sensor_depth = function() {
