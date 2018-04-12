@@ -142,7 +142,7 @@
             blocks: [
                 ['w', '链接到机器', 'connect'],
                 ['w', '链接到机器1', 'connect1'],
-                ['w', '链接到机器2', 'connect2'],
+                ['w', '链接到机器3', 'connect2'],
                 
                 ['w', '开关灯 %n ', 'set_leds', STEP_DURATION],
                 ['w', '前进 %n 秒', 'set_forward', STEP_DURATION],
