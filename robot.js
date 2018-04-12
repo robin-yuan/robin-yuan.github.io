@@ -23,10 +23,10 @@
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.onreadystatechange = function () {
                 if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-                   return xmlHttp.responseText;
-                  /*    callback(xmlHttp.responseText);
+                   //return xmlHttp.responseText;
+                  /*    callback(xmlHttp.responseText); */
                    sensors_depth = xmlHttp.responseText ;
-                 //   return sensors_depth;*/
+                   // return sensors_depth;
                 }
             };
             xmlHttp.open("GET", theUrl, true); // true for asynchronous
@@ -202,11 +202,11 @@
         sendMove10("set_drive_loop", duration, callback);
     };
      ext.connect = function() {   
-     ws = new WebSocket('ws://localhost:8080');     
+     /*ws = new WebSocket('ws://localhost:8080');     
       ws.onmessage = function(evt) {
         data = JSON.parse(evt.data);
         sensors_depth = data.depth_adc ;
-      };
+      };*/
     };
      ext.sensor_depth = function() {
       return sensors_depth;
