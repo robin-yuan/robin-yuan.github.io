@@ -141,6 +141,8 @@
         descriptor = {
             blocks: [
                 ['w', '链接到机器', 'connect'],
+                 ['w', '链接到机器', 'connect1'],
+                  ['w', '链接到机器', 'connect2'],
                 ['w', '开关灯 %n ', 'set_leds', STEP_DURATION],
                 ['w', '前进 %n 秒', 'set_forward', STEP_DURATION],
                 ['w', '后退 %n 秒', 'set_backward', STEP_DURATION],
@@ -207,17 +209,44 @@
            xmlHttp1.open("GET", APICON, true); // true for asynchronous
            xmlHttp1.send(null);
            xmlHttp1.onreadystatechange = function () {
-               // if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
+                if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
+                   //return xmlHttp.responseText;
+                  /*    callback(xmlHttp.responseText); */
+                   sensors_depth = xmlHttp1.responseText ;
+                   // return sensors_depth;
+                };
+            };
+           
+    };
+     ext.connect1 = function() {  
+       var APICON  =  "http://127.0.0.1:8900" 
+       var xmlHttp1 = new XMLHttpRequest(APICON);
+           xmlHttp1.open("GET", APICON1, true); // true for asynchronous
+           xmlHttp1.send(null);
+           xmlHttp1.onreadystatechange = function () {
+                if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
                    //return xmlHttp.responseText;
                   /*    callback(xmlHttp.responseText); */
                    sensors_depth = xmlHttp1.responseText ;
                     return sensors_depth;
-               // };
+                };
             };
            
     };
+     ext.connect2 = function() {  
+       var APICON  =  "http://127.0.0.1:8900" 
+       var xmlHttp1 = new XMLHttpRequest(APICON);
+           xmlHttp1.open("GET", APICON, true); // true for asynchronous
+           xmlHttp1.send(null);
+           
+             //return xmlHttp.responseText;
+             /*    callback(xmlHttp.responseText); */
+             sensors_depth = xmlHttp1.responseText ;
+          // return sensors_depth;
+              
+    };
      ext.sensor_depth = function() {
-      return sensors_depth;
+          return sensors_depth;
     };
 
    /* ext.turn_left = function (duration, callback) {
