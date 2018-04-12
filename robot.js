@@ -143,6 +143,7 @@
                 ['w', '链接到机器', 'connect'],
                 ['w', '链接到机器1', 'connect1'],
                 ['w', '链接到机器2', 'connect2'],
+                
                 ['w', '开关灯 %n ', 'set_leds', STEP_DURATION],
                 ['w', '前进 %n 秒', 'set_forward', STEP_DURATION],
                 ['w', '后退 %n 秒', 'set_backward', STEP_DURATION],
@@ -156,8 +157,8 @@
               //  ['w', '右转 %n 度', 'set_right', STEP_DURATION],
             //    ['w', '左转 %n 度', 'set_left', STEP_DURATION],
               //  ['w', '电机解锁/加锁 %n', 'set_drive_loop', STEP_DURATION],
-                ['r', '当前机器深度(厘米)1', 'sensor_depth1']
-                ['r', '当前机器深度(厘米)', 'sensor_depth']
+                ['r', '当前机器深度(厘米)1', 'sensor_depth1'],
+                 ['r', '当前机器深度(厘米)', 'sensor_depth']
                // 
                // ['w', 'turn right for %n seconds', 'turn_right', STEP_DURATION]
             ]
