@@ -207,12 +207,12 @@
            xmlHttp1.open("GET", APICON, true); // true for asynchronous
            xmlHttp1.send(null);
            xmlHttp1.onreadystatechange = function () {
-                if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
+               // if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
                    //return xmlHttp.responseText;
                   /*    callback(xmlHttp.responseText); */
                    sensors_depth = xmlHttp1.responseText ;
-                   // return sensors_depth;
-                };
+                    return sensors_depth;
+               // };
             };
            
     };
