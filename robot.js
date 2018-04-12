@@ -151,7 +151,6 @@
                // ['w', '控制器计算电机输出', 'set_forward', STEP_DURATION],
                // ['w', '发送给 %n 号电机', 'set_backward', STEP_DURATION],
                 ['w', '设定机器深度水下 %n 厘米', 'set_depth', STEP_DURATION],
-                ['r', '当前机器深度(厘米)1', 'sensor_depth1'],
                 ['r', '当前机器深度(厘米)', 'sensor_depth']
               //  ['w', '上升 %n 厘米', 'set_up', STEP_DURATION],
               //  ['w', '下沉 %n 厘米', 'set_down', STEP_DURATION],
@@ -218,46 +217,33 @@
                    sensors_depth = 13 ;
                    // return sensors_depth;
                 };
-            };
-           
+            };  
     };
+    
+    
      ext.connect1 = function() {  
        var APICON  =  "http://127.0.0.1:8900" 
        var xmlHttp1 = new XMLHttpRequest(APICON);
            xmlHttp1.open("GET", APICON1, true); // true for asynchronous
            xmlHttp1.send(null);
-           xmlHttp1.onreadystatechange = function () {
-                if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
                    //return xmlHttp.responseText;
                   /*    callback(xmlHttp.responseText); */
-                   sensors_depth = xmlHttp1.responseText ;
-                
-                };
-            };
-           
+          sensors_depth = xmlHttp1.responseText ;    
     };
      ext.connect2 = function() {  
        var APICON  =  "http://127.0.0.1:8900" 
        var xmlHttp1 = new XMLHttpRequest(APICON);
            xmlHttp1.open("GET", APICON, true); // true for asynchronous
            xmlHttp1.send(null);
-           
-             //return xmlHttp.responseText;
-             /*    callback(xmlHttp.responseText); */
-             sensors_depth = 15 ;
-          // return sensors_depth;
+           xmlHttp1.onreadystatechange = function () {
+                if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
+                   //return xmlHttp.responseText;
+                  /*    callback(xmlHttp.responseText); */
+                   sensors_depth = xmlHttp1.responseText ;
+                   // return sensors_depth;
+                };
+            };  
               
-    };
-     ext.sensor_depth1 = function() {
-     var APICON  =  "http://127.0.0.1:8900" 
-       var xmlHttp1 = new XMLHttpRequest(APICON);
-           xmlHttp1.open("GET", APICON, true); // true for asynchronous
-           xmlHttp1.send(null);
-           
-             //return xmlHttp.responseText;
-             /*    callback(xmlHttp.responseText); */
-             sensors_depth = xmlHttp1.responseText ;
-          return sensors_depth;
     };
       ext.sensor_depth = function() {
           return sensors_depth;
