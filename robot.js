@@ -151,14 +151,15 @@
                // ['w', '控制器计算电机输出', 'set_forward', STEP_DURATION],
                // ['w', '发送给 %n 号电机', 'set_backward', STEP_DURATION],
                 ['w', '设定机器深度水下 %n 厘米', 'set_depth', STEP_DURATION],
+                ['r', '当前机器深度(厘米)1', 'sensor_depth1'],
+                ['r', '当前机器深度(厘米)', 'sensor_depth']
               //  ['w', '上升 %n 厘米', 'set_up', STEP_DURATION],
               //  ['w', '下沉 %n 厘米', 'set_down', STEP_DURATION],
               //  ['w', '设定机器方向 %n ', 'set_north', STEP_DURATION],
               //  ['w', '右转 %n 度', 'set_right', STEP_DURATION],
             //    ['w', '左转 %n 度', 'set_left', STEP_DURATION],
               //  ['w', '电机解锁/加锁 %n', 'set_drive_loop', STEP_DURATION],
-                ['r', '当前机器深度(厘米)1', 'sensor_depth1'],
-                 ['r', '当前机器深度(厘米)', 'sensor_depth']
+                
                // 
                // ['w', 'turn right for %n seconds', 'turn_right', STEP_DURATION]
             ]
