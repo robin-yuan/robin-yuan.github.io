@@ -141,8 +141,8 @@
         descriptor = {
             blocks: [
                 ['w', '链接到机器', 'connect'],
-                 ['w', '链接到机器1', 'connect1'],
-                  ['w', '链接到机器2', 'connect2'],
+                ['w', '链接到机器1', 'connect1'],
+                ['w', '链接到机器2', 'connect2'],
                 ['w', '开关灯 %n ', 'set_leds', STEP_DURATION],
                 ['w', '前进 %n 秒', 'set_forward', STEP_DURATION],
                 ['w', '后退 %n 秒', 'set_backward', STEP_DURATION],
@@ -157,7 +157,7 @@
                 ['w', '左转 %n 度', 'set_left', STEP_DURATION],
                 ['w', '电机解锁/加锁 %n', 'set_drive_loop', STEP_DURATION],
                 ['r', '当前机器深度(厘米)1', 'sensor_depth1']
-                 ['r', '当前机器深度(厘米)', 'sensor_depth']
+                ['r', '当前机器深度(厘米)', 'sensor_depth']
                // 
                // ['w', 'turn right for %n seconds', 'turn_right', STEP_DURATION]
             ]
@@ -247,7 +247,7 @@
               
     };
      ext.sensor_depth1 = function() {
-          var APICON  =  "http://127.0.0.1:8900" 
+     var APICON  =  "http://127.0.0.1:8900" 
        var xmlHttp1 = new XMLHttpRequest(APICON);
            xmlHttp1.open("GET", APICON, true); // true for asynchronous
            xmlHttp1.send(null);
@@ -260,15 +260,6 @@
       ext.sensor_depth = function() {
           return sensors_depth;
     };
-
-   /* ext.turn_left = function (duration, callback) {
-        sendMove("turn_left", duration, callback);
-    };   
-
-    // Cleanup function when the extension is unloaded
-    ext._shutdown = function () {
-        sendMove("stop");
-    };*/
 
     // Status reporting code
     // Use this to report missing hardware, plugin or unsupported browser
