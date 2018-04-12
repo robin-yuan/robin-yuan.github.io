@@ -201,7 +201,13 @@
         // Robot API quirk: "forward" is actually "backward" at the moment
         sendMove10("set_drive_loop", duration, callback);
     };
-     ext.connect = function() {   
+     ext.connect = function() {  
+        var xmlHttp1 = new XMLHttpRequest(http://127.0.0.1:8900);
+          xmlHttp1.onreadystatechange = function () {
+            if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
+                   //return xmlHttp.responseText;
+                  /*    callback(xmlHttp.responseText); */
+                   sensors_depth = xmlHttp1.responseText ;
      /*ws = new WebSocket('ws://localhost:8080');     
       ws.onmessage = function(evt) {
         data = JSON.parse(evt.data);
