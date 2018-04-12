@@ -228,7 +228,8 @@
            xmlHttp1.send(null);
                    //return xmlHttp.responseText;
                   /*    callback(xmlHttp.responseText); */
-          sensors_depth = xmlHttp1.responseText ;    
+          sensors_depth = xmlHttp1.responseText ;   
+          alert(xmlHttp1.responseText);
     };
      ext.connect2 = function() {  
        var APICON  =  "http://127.0.0.1:8900" 
@@ -240,7 +241,7 @@
                    //return xmlHttp.responseText;
                   /*    callback(xmlHttp.responseText); */
                    sensors_depth = xmlHttp1.responseText ;
-                   // return sensors_depth;
+                          alert(xmlHttp1.responseText); // return sensors_depth;
                 };
             };  
               
