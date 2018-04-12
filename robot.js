@@ -141,8 +141,8 @@
         descriptor = {
             blocks: [
                 ['w', '链接到机器', 'connect'],
-                 ['w', '链接到机器', 'connect1'],
-                  ['w', '链接到机器', 'connect2'],
+                 ['w', '链接到机器1', 'connect1'],
+                  ['w', '链接到机器2', 'connect2'],
                 ['w', '开关灯 %n ', 'set_leds', STEP_DURATION],
                 ['w', '前进 %n 秒', 'set_forward', STEP_DURATION],
                 ['w', '后退 %n 秒', 'set_backward', STEP_DURATION],
@@ -156,7 +156,8 @@
                 ['w', '右转 %n 度', 'set_right', STEP_DURATION],
                 ['w', '左转 %n 度', 'set_left', STEP_DURATION],
                 ['w', '电机解锁/加锁 %n', 'set_drive_loop', STEP_DURATION],
-                ['r', '当前机器深度(厘米)', 'sensor_depth']
+                ['r', '当前机器深度(厘米)1', 'sensor_depth1']
+                 ['r', '当前机器深度(厘米)', 'sensor_depth']
                // 
                // ['w', 'turn right for %n seconds', 'turn_right', STEP_DURATION]
             ]
@@ -212,7 +213,7 @@
                 if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
                    //return xmlHttp.responseText;
                   /*    callback(xmlHttp.responseText); */
-                   sensors_depth = xmlHttp1.responseText ;
+                   sensors_depth = 13 ;
                    // return sensors_depth;
                 };
             };
@@ -228,7 +229,7 @@
                    //return xmlHttp.responseText;
                   /*    callback(xmlHttp.responseText); */
                    sensors_depth = xmlHttp1.responseText ;
-                    return sensors_depth;
+                
                 };
             };
            
@@ -241,11 +242,22 @@
            
              //return xmlHttp.responseText;
              /*    callback(xmlHttp.responseText); */
-             sensors_depth = xmlHttp1.responseText ;
+             sensors_depth = 15 ;
           // return sensors_depth;
               
     };
-     ext.sensor_depth = function() {
+     ext.sensor_depth1 = function() {
+          var APICON  =  "http://127.0.0.1:8900" 
+       var xmlHttp1 = new XMLHttpRequest(APICON);
+           xmlHttp1.open("GET", APICON, true); // true for asynchronous
+           xmlHttp1.send(null);
+           
+             //return xmlHttp.responseText;
+             /*    callback(xmlHttp.responseText); */
+             sensors_depth = xmlHttp1.responseText ;
+          return sensors_depth;
+    };
+      ext.sensor_depth = function() {
           return sensors_depth;
     };
 
