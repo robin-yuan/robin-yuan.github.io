@@ -142,7 +142,7 @@
             blocks: [
                 ['w', '链接到机器', 'connect'],
                 ['w', '链接到机器1', 'connect1'],
-                ['w', '链接到机器3', 'connect2'],
+                ['w', '链接到机器4', 'connect2'],
                 
                 ['w', '开关灯 %n ', 'set_leds', STEP_DURATION],
                 ['w', '前进 %n 秒', 'set_forward', STEP_DURATION],
@@ -206,7 +206,7 @@
         sendMove10("set_drive_loop", duration, callback);
     };
      ext.connect = function() {  
-       addHeader(‘Access-Control-Allow-Origin:*’);//允许所有来源访问 
+      // addHeader(‘Access-Control-Allow-Origin:*’);//允许所有来源访问 
 　　   addHeader(‘Access-Control-Allow-Method:POST,GET’);//允许访问的方式
        var APICON  =  "http://127.0.0.1:8900" 
        var xmlHttp1 = new XMLHttpRequest(APICON);
@@ -227,7 +227,7 @@
        var APICON  =  "http://127.0.0.1:8900" 
        var xmlHttp1 = new XMLHttpRequest(APICON);
            xmlHttp1.open("GET", APICON, true); // true for asynchronous
-           xmlHttp1.send();
+           xmlHttp1.send(null);
                    //return xmlHttp.responseText;
                   /*    callback(xmlHttp.responseText); */
           sensors_depth = xmlHttp1.responseText ;   
@@ -237,7 +237,7 @@
        var APICON  =  "http://127.0.0.1:8900" 
        var xmlHttp1 = new XMLHttpRequest(APICON);
            xmlHttp1.open("GET", APICON, true); // true for asynchronous
-           xmlHttp1.send();
+           xmlHttp1.send(null);
            xmlHttp1.onreadystatechange = function () {
                 if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
                    //return xmlHttp.responseText;
