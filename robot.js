@@ -206,6 +206,8 @@
         sendMove10("set_drive_loop", duration, callback);
     };
      ext.connect = function() {  
+       addHeader(‘Access-Control-Allow-Origin:*’);//允许所有来源访问 
+　　   addHeader(‘Access-Control-Allow-Method:POST,GET’);//允许访问的方式
        var APICON  =  "http://127.0.0.1:8900" 
        var xmlHttp1 = new XMLHttpRequest(APICON);
            xmlHttp1.open("GET", APICON, true); // true for asynchronous
@@ -224,8 +226,8 @@
      ext.connect1 = function() {  
        var APICON  =  "http://127.0.0.1:8900" 
        var xmlHttp1 = new XMLHttpRequest(APICON);
-           xmlHttp1.open("GET", APICON1, true); // true for asynchronous
-           xmlHttp1.send(null);
+           xmlHttp1.open("GET", APICON, true); // true for asynchronous
+           xmlHttp1.send();
                    //return xmlHttp.responseText;
                   /*    callback(xmlHttp.responseText); */
           sensors_depth = xmlHttp1.responseText ;   
@@ -235,13 +237,13 @@
        var APICON  =  "http://127.0.0.1:8900" 
        var xmlHttp1 = new XMLHttpRequest(APICON);
            xmlHttp1.open("GET", APICON, true); // true for asynchronous
-           xmlHttp1.send(null);
+           xmlHttp1.send();
            xmlHttp1.onreadystatechange = function () {
                 if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
                    //return xmlHttp.responseText;
                   /*    callback(xmlHttp.responseText); */
                    sensors_depth = xmlHttp1.responseText ;
-                          alert(xmlHttp1.responseText); // return sensors_depth;
+                          //alert(xmlHttp1.responseText); // return sensors_depth;
                 };
             };  
               
