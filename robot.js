@@ -157,11 +157,11 @@
                // ['w', '左转 %n 度', 'set_left', STEP_DURATION],
                // ['w', '电机解锁/加锁 %n', 'set_drive_loop', STEP_DURATION],
                 ['r', '当前机器深度(厘米)', 'sensor_depth'],
-                ['r', '当前机器方向角', 'sensor_yaw'],
-                ['r', '当前机器俯仰角', 'sensor_pitch'],
-                ['r', '当前机器电池电量（%）', 'sensor_battery'],
-                ['r', '水温', 'sensor_temp'],
-                ['r', '机器密封舱湿度', 'sensor_humidity']
+                ['r', '当前机器方向角', 'sensor_yaw']
+             //   ['r', '当前机器俯仰角', 'sensor_pitch'],
+               // ['r', '当前机器电池电量（%）', 'sensor_battery'],
+             //   ['r', '水温', 'sensor_temp'],
+             //   ['r', '机器密封舱湿度', 'sensor_humidity']
                // 
                // ['w', 'turn right for %n seconds', 'turn_right', STEP_DURATION]
             ]
