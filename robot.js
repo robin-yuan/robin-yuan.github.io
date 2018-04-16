@@ -3,12 +3,12 @@
 "use strict";
 (function (ext) {
     // Default step duration: 0.5s
-    var sensors_depth = 0,
-        sensors_yaw = 0,
-        sensors_pitch = 0,
-        sensors_battery = 0,
-        sensors_temp = 0,
-        sensors_humidity = 0,
+    var sensors_depth = 0;
+    var sensors_yaw = 0 ;
+    var sensors_pitch = 0;
+    var sensors_battery = 0;
+    var sensors_temp = 0;
+    var sensors_humidity = 0;
     var ws ;
     var STEP_DURATION = 0,
         API_BASE_URL1 =  "http://127.0.0.1:8900/set_leds?degrees=",
@@ -145,7 +145,7 @@
         // Block and block menu descriptions
         descriptor = {
             blocks: [
-                ['w', '获取水下机器人数据', 'connect'],
+                ['r', '获取水下机器人数据', 'connect'],
                 ['w', '开关灯 %n ', 'set_leds', STEP_DURATION],
                 ['w', '前进 %n 秒', 'set_forward', STEP_DURATION],
                 ['w', '后退 %n 秒', 'set_backward', STEP_DURATION],
