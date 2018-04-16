@@ -3,7 +3,12 @@
 "use strict";
 (function (ext) {
     // Default step duration: 0.5s
-    var sensors_depth = 10;
+    var sensors_depth = 0,
+        sensors_yaw = 0,
+        sensors_pitch = 0,
+        sensors_battery = 0,
+        sensors_temp = 0,
+        sensors_humidity = 0,
     var ws ;
     var STEP_DURATION = 0,
         API_BASE_URL1 =  "http://127.0.0.1:8900/set_leds?degrees=",
@@ -140,25 +145,23 @@
         // Block and block menu descriptions
         descriptor = {
             blocks: [
-                ['w', '链接到机器', 'connect'],
-                ['w', '链接到机器1', 'connect1'],
-                ['w', '链接到机器4', 'connect2'],
-                
+                ['w', '获取水下机器人数据', 'connect'],
                 ['w', '开关灯 %n ', 'set_leds', STEP_DURATION],
                 ['w', '前进 %n 秒', 'set_forward', STEP_DURATION],
                 ['w', '后退 %n 秒', 'set_backward', STEP_DURATION],
-                //['w', '读取机器人当前深度值 ', 'set_leds', STEP_DURATION],
-               // ['w', '控制器计算电机输出', 'set_forward', STEP_DURATION],
-               // ['w', '发送给 %n 号电机', 'set_backward', STEP_DURATION],
-                ['w', '设定机器深度水下 %n 厘米', 'set_depth', STEP_DURATION],
-                ['r', '当前机器深度(厘米)', 'sensor_depth']
-              //  ['w', '上升 %n 厘米', 'set_up', STEP_DURATION],
-              //  ['w', '下沉 %n 厘米', 'set_down', STEP_DURATION],
-              //  ['w', '设定机器方向 %n ', 'set_north', STEP_DURATION],
-              //  ['w', '右转 %n 度', 'set_right', STEP_DURATION],
-            //    ['w', '左转 %n 度', 'set_left', STEP_DURATION],
-              //  ['w', '电机解锁/加锁 %n', 'set_drive_loop', STEP_DURATION],
-                
+                ['w', '设定机器深度水下 %n 厘米', 'set_depth', STEP_DURATION], 
+                ['w', '上升 %n 厘米', 'set_up', STEP_DURATION],
+                ['w', '下沉 %n 厘米', 'set_down', STEP_DURATION],
+                ['w', '设定机器方向 %n ', 'set_north', STEP_DURATION],
+                ['w', '右转 %n 度', 'set_right', STEP_DURATION],
+                ['w', '左转 %n 度', 'set_left', STEP_DURATION],
+                ['w', '电机解锁/加锁 %n', 'set_drive_loop', STEP_DURATION],
+                ['r', '当前机器深度(厘米)', 'sensor_depth'],
+                ['r', '当前机器方向角', 'sensor_yaw'],
+                ['r', '当前机器俯仰角', 'sensor_pitch'],
+                ['r', '当前机器电池电量（%）', 'sensor_battery'],
+                ['r', '水温', 'sensor_temp'],
+                ['r', '机器密封舱湿度', 'sensor_humidity']
                // 
                // ['w', 'turn right for %n seconds', 'turn_right', STEP_DURATION]
             ]
@@ -214,44 +217,37 @@
            xmlHttp1.send();
            xmlHttp1.onreadystatechange = function () {
                 if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
-                   //return xmlHttp.responseText;
-                  /*    callback(xmlHttp.responseText); */
-                   sensors_depth = 13 ;
-                   // return sensors_depth;
+                 var data = JSON.parse(xmlHttp.responseText) 
+                     sensors_depth = data.rov.depth ;
+                     sensors_yaw = data.rov.yaw;
+                     sensors_pitch = data.rov.pitch;
+                     sensors_battery = data.rov.battery;
+                     sensors_temp = data.rov.temp;
+                     sensors_humidity = data.rov.humidity;
                 };
             };  
     };
     
     
-     ext.connect1 = function() {  
-       var APICON  =  "http://127.0.0.1:8900" 
-       var xmlHttp1 = new XMLHttpRequest(APICON);
-           xmlHttp1.open("GET", APICON, true); // true for asynchronous
-           xmlHttp1.send();
-                   //return xmlHttp.responseText;
-                  /*    callback(xmlHttp.responseText); */
-          sensors_depth = xmlHttp1.responseText ;   
-          sensors_depth = 20 ;
-    };
-     ext.connect2 = function() {  
-       var APICON  =  "http://127.0.0.1:8900" 
-       var xmlHttp1 = new XMLHttpRequest(APICON);
-           xmlHttp1.open("GET", APICON, true); // true for asynchronous
-           xmlHttp1.send(null);
-           xmlHttp1.onreadystatechange = function () {
-                if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
-                   //return xmlHttp.responseText;
-                  /*    callback(xmlHttp.responseText); */
-                   sensors_depth = xmlHttp1.responseText ;
-                          //alert(xmlHttp1.responseText); // return sensors_depth;
-                };
-            };  
-              
-    };
+  
       ext.sensor_depth = function() {
           return sensors_depth;
     };
-
+      ext.sensor_yaw = function() {
+          return sensors_yaw;
+    };
+     ext.sensor_pitch = function() {
+          return sensors_pitch;
+    };
+     ext.sensor_battery = function() {
+          return sensors_battery;
+    };
+     ext.sensor_temp = function() {
+          return sensors_temp;
+    };
+     ext.sensor_humidity = function() {
+          return sensors_humidity;
+    };
     // Status reporting code
     // Use this to report missing hardware, plugin or unsupported browser
     ext._getStatus = function () {
