@@ -145,17 +145,17 @@
         // Block and block menu descriptions
         descriptor = {
             blocks: [
-                ['r', '获取水下机器人数据', 'connect'],
+                ['w', '获取水下机器人数据', 'connect'],
                 ['w', '开关灯 %n ', 'set_leds', STEP_DURATION],
                 ['w', '前进 %n 秒', 'set_forward', STEP_DURATION],
-                ['w', '后退 %n 秒', 'set_backward', STEP_DURATION],
-                ['w', '设定机器深度水下 %n 厘米', 'set_depth', STEP_DURATION], 
-                ['w', '上升 %n 厘米', 'set_up', STEP_DURATION],
-                ['w', '下沉 %n 厘米', 'set_down', STEP_DURATION],
-                ['w', '设定机器方向 %n ', 'set_north', STEP_DURATION],
-                ['w', '右转 %n 度', 'set_right', STEP_DURATION],
-                ['w', '左转 %n 度', 'set_left', STEP_DURATION],
-                ['w', '电机解锁/加锁 %n', 'set_drive_loop', STEP_DURATION],
+               // ['w', '后退 %n 秒', 'set_backward', STEP_DURATION],
+                //['w', '设定机器深度水下 %n 厘米', 'set_depth', STEP_DURATION], 
+                //['w', '上升 %n 厘米', 'set_up', STEP_DURATION],
+                //['w', '下沉 %n 厘米', 'set_down', STEP_DURATION],
+                //['w', '设定机器方向 %n ', 'set_north', STEP_DURATION],
+               // ['w', '右转 %n 度', 'set_right', STEP_DURATION],
+               // ['w', '左转 %n 度', 'set_left', STEP_DURATION],
+               // ['w', '电机解锁/加锁 %n', 'set_drive_loop', STEP_DURATION],
                 ['r', '当前机器深度(厘米)', 'sensor_depth'],
                 ['r', '当前机器方向角', 'sensor_yaw'],
                 ['r', '当前机器俯仰角', 'sensor_pitch'],
@@ -214,7 +214,7 @@
        var APICON  =  "http://127.0.0.1:8900" 
        var xmlHttp1 = new XMLHttpRequest(APICON);
            xmlHttp1.open("GET", APICON, true); // true for asynchronous
-           xmlHttp1.send();
+           xmlHttp1.send(null);
            xmlHttp1.onreadystatechange = function () {
                 if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
                  var data = eval('('+xmlHttp.responseText+')') ;
