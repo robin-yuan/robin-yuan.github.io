@@ -217,9 +217,9 @@
            xmlHttp1.send(null);
            xmlHttp1.onreadystatechange = function () {
                 if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
-                     sensors_depth = xmlHttp.responseText ;
+                    // sensors_depth = xmlHttp.responseText ;
                     var data = eval('('+xmlHttp.responseText+')') ;
-                   //  sensors_depth = data.rov.depth ;
+                     sensors_depth = data.rov.depth ;
                      sensors_yaw = data.rov.yaw;
                      sensors_pitch = data.rov.pitch;
                      sensors_battery = data.rov.battery;
