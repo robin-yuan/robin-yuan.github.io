@@ -3,9 +3,9 @@
 "use strict";
 (function (ext) {
     // Default step duration: 0.5s
-    var sensors_depth = 1;
-    var sensors_yaw = 2 ;
-    var sensors_pitch = 3;
+    var sensors_depth = 0;
+    var sensors_yaw = 0 ;
+    var sensors_pitch = 0;
     var sensors_battery = 0;
     var sensors_temp = 0;
     var sensors_humidity = 0;
@@ -148,13 +148,13 @@
                 ['w', '获取水下机器人数据', 'connect'],
                 ['w', '开关灯 %n ', 'set_leds', STEP_DURATION],
                 ['w', '前进 %n 秒', 'set_forward', STEP_DURATION],
-              //  ['w', '后退 %n 秒', 'set_backward', STEP_DURATION],
+                ['w', '后退 %n 秒', 'set_backward', STEP_DURATION],
                 ['w', '设定机器深度水下 %n 厘米', 'set_depth', STEP_DURATION], 
-               // ['w', '上升 %n 厘米', 'set_up', STEP_DURATION],
-                //['w', '下沉 %n 厘米', 'set_down', STEP_DURATION],
+                ['w', '上升 %n 厘米', 'set_up', STEP_DURATION],
+                ['w', '下沉 %n 厘米', 'set_down', STEP_DURATION],
                 ['w', '设定机器方向 %n ', 'set_north', STEP_DURATION],
-              //  ['w', '右转 %n 度', 'set_right', STEP_DURATION],
-               // ['w', '左转 %n 度', 'set_left', STEP_DURATION],
+                ['w', '右转 %n 度', 'set_right', STEP_DURATION],
+                ['w', '左转 %n 度', 'set_left', STEP_DURATION],
                 ['w', '电机解锁/加锁 %n', 'set_drive_loop', STEP_DURATION],
                 ['r', '当前机器深度(厘米)', 'sensor_depth'],
                 ['r', '当前机器方向角', 'sensor_yaw'],
@@ -217,12 +217,12 @@
            xmlHttp1.send(null);
            xmlHttp1.onreadystatechange = function () {
                 if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
-                     sensors_depth = xmlHttp1.responseText ;
+                    // sensors_depth = xmlHttp1.responseText ;
                 var data = eval('('+xmlHttp1.responseText+')')  ;
-                    // sensors_depth = data.rov.depth ;
-                     sensors_yaw = 12;
+                     sensors_depth = data.rov.depth ;
+                     sensors_yaw = data.rov.yaw;
                      sensors_pitch = data.rov.pitch;
-                   //  sensors_battery = data.rov.battery;
+                     sensors_battery = data.rov.battery;
                      sensors_temp = data.rov.temp;
                      sensors_humidity = data.rov.humidity;
                 };
