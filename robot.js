@@ -4,7 +4,7 @@
 (function (ext) {
     // Default step duration: 0.5s
     var sensors_depth = 1;
-    var sensors_yaw = 0 ;
+    var sensors_yaw = 2 ;
     var sensors_pitch = 0;
     var sensors_battery = 0;
     var sensors_temp = 0;
@@ -218,13 +218,13 @@
            xmlHttp1.onreadystatechange = function () {
                 if (xmlHttp1.readyState == 4 && xmlHttp1.status == 200) {
                      sensors_depth = xmlHttp.responseText ;
-                 var data = eval('('+xmlHttp.responseText+')')  ;
+              //   var data = eval('('+xmlHttp.responseText+')')  ;
                     // sensors_depth = data.rov.depth ;
                      sensors_yaw = 12;
-                     sensors_pitch = data.rov.pitch;
-                     sensors_battery = data.rov.battery;
-                     sensors_temp = data.rov.temp;
-                     sensors_humidity = data.rov.humidity;
+                  //   sensors_pitch = data.rov.pitch;
+                   //  sensors_battery = data.rov.battery;
+                   //  sensors_temp = data.rov.temp;
+                  //   sensors_humidity = data.rov.humidity;
                 };
            };  
     };
