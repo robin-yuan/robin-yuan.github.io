@@ -208,7 +208,7 @@
         // Robot API quirk: "forward" is actually "backward" at the moment
         sendMove10("set_drive_loop", duration, callback);
     };
-     ext.connect = function() {  
+     ext.connect = function(callback) {  
       // addHeader(‘Access-Control-Allow-Origin:*’);//允许所有来源访问 
 　　  // addHeader(‘Access-Control-Allow-Method:POST,GET’);//允许访问的方式
        var APICON  =  "http://127.0.0.1:8900" 
@@ -225,6 +225,7 @@
                      sensors_battery = data.rov.battery;
                      sensors_temp = data.rov.temp;
                      sensors_humidity = data.rov.humidity;
+                    callback();
                 };
            };  
     };
