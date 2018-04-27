@@ -21,10 +21,10 @@
         API_BASE_URL8 =  "http://127.0.0.1:8900/set_right?degrees=",
         API_BASE_URL9 =  "http://127.0.0.1:8900/set_left?degrees=",
         API_BASE_URL10 = "http://127.0.0.1:8900/set_drive_loop?degrees=",
-        API_BASE_URL11 = "http://127.0.0.1:8900/set_moter1?degrees=",
-        API_BASE_URL12 = "http://127.0.0.1:8900/set_moter2?degrees=",
-        API_BASE_URL13 = "http://127.0.0.1:8900/set_moter3?degrees=",
-        API_BASE_URL14 = "http://127.0.0.1:8900/set_moter4?degrees=",
+        API_BASE_URL11 = "http://127.0.0.1:8900/set_motor1?degrees=",
+        API_BASE_URL12 = "http://127.0.0.1:8900/set_motor2?degrees=",
+        API_BASE_URL13 = "http://127.0.0.1:8900/set_motor3?degrees=",
+        API_BASE_URL14 = "http://127.0.0.1:8900/set_motor4?degrees=",
        // API_BASE_URL10 = "http://127.0.0.1:8900/set_stop?degrees=",
 
         // Asynchronous HTTP Get Request
@@ -199,10 +199,10 @@
                 ['w', '设定机器方向 %n ', 'set_north', STEP_DURATION],
                 ['w', '右转 %n 度', 'set_right', STEP_DURATION],
                 ['w', '左转 %n 度', 'set_left', STEP_DURATION],
-                ['w', '设定一号电机速度为 %n', 'set_moter1', STEP_DURATION],
-                ['w', '设定二号电机速度为 %n', 'set_moter2', STEP_DURATION],
-                ['w', '设定三号电机速度为 %n', 'set_moter3', STEP_DURATION],
-                ['w', '设定四号电机速度为 %n', 'set_moter4', STEP_DURATION],
+                ['w', '设定一号电机速度为 %n', 'set_motor1', STEP_DURATION],
+                ['w', '设定二号电机速度为 %n', 'set_motor2', STEP_DURATION],
+                ['w', '设定三号电机速度为 %n', 'set_motor3', STEP_DURATION],
+                ['w', '设定四号电机速度为 %n', 'set_motor4', STEP_DURATION],
                 ['w', '电机解锁/加锁 %n', 'set_drive_loop', STEP_DURATION],
                 ['r', '当前机器深度(厘米)', 'sensor_depth'],
                 ['r', '当前机器方向角', 'sensor_yaw'],
@@ -214,21 +214,21 @@
                // ['w', 'turn right for %n seconds', 'turn_right', STEP_DURATION]
             ]
         };
-    ext.set_moter1 = function (duration, callback) {
+    ext.set_motor1 = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
-        sendMove11("set_moter1", duration, callback);
+        sendMove11("set_motor1", duration, callback);
     };
-     ext.set_moter2 = function (duration, callback) {
+     ext.set_motor2 = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
-        sendMove12("set_moter2", duration, callback);
+        sendMove12("set_motor2", duration, callback);
     };
-     ext.set_moter3 = function (duration, callback) {
+     ext.set_motor3 = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
-        sendMove13("set_moter3", duration, callback);
+        sendMove13("set_motor3", duration, callback);
     };
-     ext.set_moter4 = function (duration, callback) {
+     ext.set_motor4 = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
-        sendMove14("set_moter4", duration, callback);
+        sendMove14("set_motor4", duration, callback);
     };
     ext.set_leds = function (duration, callback) {
         // Robot API quirk: "forward" is actually "backward" at the moment
